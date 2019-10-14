@@ -1,0 +1,2 @@
+module Roles::OtherHelper
+end
