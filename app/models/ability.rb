@@ -13,22 +13,22 @@ class Ability
         can :manage, :all           # allow superadmins to do anything
       end
 
-      if user.students?
-
-        can :manage, :all
-      end
-
-      if user.mothers?
-
-          can :manage, :all
-
-      end
-
-      if user.fathers?
-
-        can :manage, :all
-
-      end
+      # if user.students?
+      #
+      #   can :manage, :all
+      # end
+      #
+      # if user.mothers?
+      #
+      #     can :manage, :all
+      #
+      # end
+      #
+      # if user.fathers?
+      #
+      #   can :manage, :all
+      #
+      # end
 
       #if user.others?
 

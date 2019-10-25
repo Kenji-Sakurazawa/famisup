@@ -5,13 +5,9 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     user = current_user
 
-    if user.admin?
-      rails_admin_path
-
-    elsif user.mothers? || user.fathers?
+    if user.mothers? || user.fathers?
       roles_parent_path
-
-    elsif user.children?
+    elsif user.students?
       roles_children_path
     else
       roles_others_path
@@ -24,10 +20,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user = current_user
 
-    if user.mothers? || user.fathers?
+    if user.admin?
+      rails_admin_path
+    elsif user.mothers? || user.fathers?
       roles_parent_path
-
-    elsif user.children?
+    elsif user.students?
       roles_children_path
     else
       roles_others_path
