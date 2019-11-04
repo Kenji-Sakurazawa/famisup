@@ -13,5 +13,11 @@ User.create(
 )
 
 Topic.create(
-  title: "勉強について"
+  title: "勉強について",
+)
+
+Post.create(
+  name: "Ken",
+  body: "I hate to study",
+  topic_id: 2
 )

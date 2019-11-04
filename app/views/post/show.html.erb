@@ -1,0 +1,34 @@
+<h1><%= @topic.title %></h1>
+<% @post.each_with_index do |post , idx| %>
+<% unless current_user.others? %>
+<p>
+  <%= idx + 1 %>. <%= post.body %> <% if post.user_id == current_user.id || current_user.admin? %>
+  <%= link_to '[編集]', post_edit_path(post.id) %>
+  <%= link_to '[削除]', post_destroy_path(post.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+   <% end %>
+</p>
+<% end %>
+<% end %>
+<% unless current_user.others? %>
+<h3> 新規書き込み </h3>
+<%= bootstrap_form_with(model: @newpost, url: {action: 'create'}) do |f| %>
+<% if @newpost.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@newpost.errors.count, "error") %> 以下エラーメッセージになります </h2>
+
+    <ul>
+    <% @newpost.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= f.text_field :name %>
+<%= f.text_area :body %>
+<%= f.hidden_field :topic_id %>
+<%# if current_user.admin? %>
+<%#= f.select :role, [["生徒", "students"], ["親", "parents"]], {include_blank:  "選択してください" , selected: "選択してください"} %>
+<%# end %>
+<%= f.submit %>
+<% end %>
+<% end %>

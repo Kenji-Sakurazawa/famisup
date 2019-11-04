@@ -1,7 +1,7 @@
 <h1>トピック一覧</h1>
 <ul>
   <% @topics.each do |topic| %>
-    <li><%= link_to topic.title, topics_show_path(topic.id), class:"btn btn-warning" %>
+    <li><%= link_to topic.title, post_show_path(topic.id), class:"btn btn-warning" %>
         <%= link_to '[削除]', topics_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
     </li>
 
@@ -11,9 +11,9 @@
 <h1>トピック新規登録</h1>
 <%= bootstrap_form_with(model: @newTopic, url: {action: 'create'}) do |f| %>
   <%= f.text_field :title, label: "新しいトピック" %>
-  <% if current_user.admin? %>
-  <%= f.select :role, [["生徒", "students"], ["親", "parents"]], {include_blank:  "選択してください" , selected: "選択してください"} %>
-  <% end %>
+  <%# if current_user.admin? %>
+  <%#= f.select :role, [["生徒", "students"], ["親", "parents"]], {include_blank:  "選択してください" , selected: "選択してください"} %>
+  <%# end %>
   <%= f.submit %>
 <% end %>
 <% end %>

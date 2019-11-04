@@ -1,0 +1,17 @@
+<h1>編集</h1>
+<%= bootstrap_form_with(model: @post, url: {action: 'update'}) do |f| %>
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> 以下エラーメッセージです</h2>
+
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= f.text_field :name, value: @post.name %>
+<%= f.text_area :body, value: @post.body %>
+<%= f.submit %>
+<% end %>
