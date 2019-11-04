@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   put 'post/update/:id' => 'post#update'
   delete 'post/delete/:id' => 'post#destroy', as: :post_destroy
   get 'user' => 'topics#index', as: :user
+
+  root to: 'tops#index'
+
 end
