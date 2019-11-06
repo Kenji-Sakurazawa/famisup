@@ -2,7 +2,7 @@
 <ul>
   <% @topics.each do |topic| %>
     <li><%= link_to topic.title, post_show_path(topic.id), class:"btn btn-warning" %>
-        <%= link_to '[削除]', topics_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+        <%= if current_user.admin? then link_to '[削除]', topics_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} end %>
     </li>
 
   <% end %>
@@ -17,3 +17,4 @@
   <%= f.submit %>
 <% end %>
 <% end %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

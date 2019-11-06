@@ -1,5 +1,10 @@
 class PostController < ApplicationController
+  before_action :authenticate
 
+def authenticate
+  redirect_to new_user_registration_url unless user_signed_in?
+end
+  # before_filter :authenticate_user!
   def show
     @topic = Topic.find(params[:id])
     @newpost = Post.new(topic_id: params[:id])

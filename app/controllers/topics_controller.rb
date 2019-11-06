@@ -1,4 +1,11 @@
 class TopicsController < ApplicationController
+  before_action :authenticate
+
+  def authenticate
+    redirect_to new_user_registration_url unless user_signed_in?
+  end
+  # before_filter :authenticate_user!
+
   def index
     # if current_user.mothers? || user.fathers?
     @topics = Topic.all
