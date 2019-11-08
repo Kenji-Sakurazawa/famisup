@@ -51,4 +51,7 @@ production:
   <<: *default
   database: famisup_production
   username: famisup
-  password: <%= ENV['FAMISUP_DATABASE_PASSWORD'] %>
+  password: 
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
