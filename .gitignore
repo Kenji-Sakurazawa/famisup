@@ -7,8 +7,7 @@
 # Ignore vendor/bundle directory
 /vendor/bundle
 
-# Ignore gemfile.lock
-/Gemfile.lock
+
 
 # Ignore bundler config.
 /.bundle
